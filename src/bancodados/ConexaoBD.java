@@ -1,4 +1,4 @@
-package conexaobd;
+package bancodados;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,12 +6,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class ConexaoBD {
-    private Statement stmt;
-    private Connection conn;
+    protected Statement stmt;
+    protected Connection conn;
 
     public Statement conectar() throws ClassNotFoundException, SQLException {
         String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-        String url = "jdbc:sqlserver://localhost:1433;DatabaseName=Locadora";
+        String url = "jdbc:sqlserver://DESKTOP-BJGK76C\\SQLEXPRESS:1433;DatabaseName=mercado";
         String usuario = "sa";
         String senha = "123";
         Class.forName(driver);

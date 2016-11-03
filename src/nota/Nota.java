@@ -14,14 +14,6 @@ public class Nota {
     private Time horario;
     private char situacao;
 
-    public Nota(int codigo, Date data, Time horario, char situacao) {
-        this.codigo = codigo;
-        this.cliente = new Cliente();
-        this.data = data;
-        this.horario = horario;
-        this.situacao = situacao;
-    }
-
     public int getCodigo() {
         return codigo;
     }
@@ -52,5 +44,13 @@ public class Nota {
 
     public void setSituacao(char situacao) {
         this.situacao = situacao;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }

@@ -7,11 +7,6 @@ public class Fabricante extends Pessoa {
     private String nomeFantasia;
     private String razaoSocial;
 
-    public Fabricante(int cpnj, String nomeFantasia, String razaoSocial) {
-        this.cnpj = cnpj;
-        this.nomeFantasia = nomeFantasia;
-        this.razaoSocial = razaoSocial;
-    }
 
     //Getters and setters
     public int getCnpj() {

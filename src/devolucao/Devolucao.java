@@ -11,15 +11,6 @@ public class Devolucao {
     private Time horario;
     private double valor;
 
-    //Construtor
-    public Devolucao(int codigo, Date data, Time horario, double valor, int codigoNota, Date dataNota, Time horarioNota, char situacaoNota) {
-        this.codigo = codigo;
-        this.nota = new Nota(codigoNota, dataNota, horarioNota, situacaoNota);
-        this.data = data;
-        this.horario = horario;
-        this.valor = valor;
-    }
-
     //Getters and setters
     public int getCodigo() {
         return codigo;

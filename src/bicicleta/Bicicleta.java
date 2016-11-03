@@ -13,16 +13,6 @@ public class Bicicleta {
     private String cor;
     private String pneu;
 
-    //Construtor
-    public Bicicleta(int codigo, String descricao, Date ano, String cor, String pneu, int codigoCategoria, String descricaoCategoria) {
-        this.codigo = codigo;
-        this.categoria = new Categoria(codigoCategoria, descricaoCategoria);
-        this.descricao = descricao;
-        this.ano = ano;
-        this.cor = cor;
-        this.pneu = pneu;
-    }
-
     //Getters and setters
     public int getCodigo() {
         return codigo;

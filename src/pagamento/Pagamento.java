@@ -1,7 +1,9 @@
-package projetoclassesbasicas;
+package pagamento;
 
+import bandeira.Bandeira;
 import java.sql.Date;
 import java.sql.Time;
+import nota.Nota;
 
 public class Pagamento {
 

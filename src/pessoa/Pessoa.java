@@ -1,20 +1,20 @@
 package pessoa;
 
 public abstract class Pessoa {
-    private int cep;
+    private String cep;
     private String logradouro;
     private int numero;
     private String complemento;
     private String bairro;
     private String cidade;
     private String uf;
-    private int telefone;
+    private String telefone;
 
-    public int getCep() {
+    public String getCep() {
         return cep;
     }
 
-    public void setCep(int cep) {
+    public void setCep(String cep) {
         this.cep = cep;
     }
 
@@ -66,11 +66,11 @@ public abstract class Pessoa {
         this.uf = uf;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 }

@@ -5,12 +5,6 @@ public class Bandeira {
     private int codigo;
     private String descricao;
 
-    //Construtor
-    public Bandeira(int codigo, String descricao) {
-        this.codigo = codigo;
-        this.descricao = descricao;
-    }
-
     //Getters and setters
     public int getCodigo() {
         return codigo;

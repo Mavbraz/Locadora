@@ -4,25 +4,19 @@ import pessoa.Pessoa;
 import java.sql.Date;
 
 public class Cliente extends Pessoa {
-    private int cpf;
+
+    private String cpf;
     private String nome;
     private char sexo;
     private Date dataNascimento;
 
-    //Construtor
-    public Cliente(int cpf, String nome, char sexo, Date dataNascimento) {
-        this.cpf = cpf;
-        this.nome = nome;
-        this.sexo = sexo;
-        this.dataNascimento = dataNascimento;
-    }
 
     //Getters and setters
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
