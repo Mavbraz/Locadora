@@ -5,7 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class ConexaoBD {
+//abstract para ninguém poder instanciar, apenas herdar.
+public abstract class ConexaoBD {
 
     protected Statement stmt;
     protected Connection conn;

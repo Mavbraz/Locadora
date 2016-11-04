@@ -1,5 +1,6 @@
 package cliente;
 
+//Contrato para ser utilizado em Cliente
 public interface InterfaceCliente {
     //Cadastrar cliente no banco de dados
     void cadastrar(Cliente c) throws Exception;

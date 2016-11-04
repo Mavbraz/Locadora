@@ -4,12 +4,14 @@ import cliente.Cliente;
 import cliente.ClienteDados;
 import javax.swing.JOptionPane;
 
+//Classe teste para ver se cadastra, atualiza e remove corretamente.
 public class Main {
 
     public static void main(String[] args) {
+        //Criando Cliente
         Cliente c = new Cliente();
         c.setCpf("123.456.789-00");
-        //c.setNome("Josefina");
+        //c.setNome("Josefina"); //Em cadastrar
         c.setSexo('M');
         c.setDataNascimento("01/01/2017");
         c.setTelefone("(81)99807-3310");
@@ -20,9 +22,11 @@ public class Main {
         c.setCidade("Recife");
         c.setUf("PE");
 
-        c.setNome("José");
+        c.setNome("José"); //Em atualizar
 
+        //Tentativa, se der erro mostra a mensagem
         try {
+            //Cria uma instância de dados para ser utilizada
             ClienteDados dados = new ClienteDados();
 
             //dados.cadastrar(c);
@@ -34,6 +38,7 @@ public class Main {
             dados.remover(c);
             JOptionPane.showMessageDialog(null, "Removido com sucesso.");
         } catch (Exception ex) {
+            //Exibição do erro
             JOptionPane.showMessageDialog(null, "Erro: " + ex.getMessage());
         }
     }
