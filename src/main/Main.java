@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         Cliente c = new Cliente();
         c.setCpf("123.456.789-00");
-        c.setNome("Josefina");
+        //c.setNome("Josefina");
         c.setSexo('M');
         c.setDataNascimento("01/01/2017");
         c.setTelefone("(81)99807-3310");
@@ -20,11 +20,19 @@ public class Main {
         c.setCidade("Recife");
         c.setUf("PE");
 
+        c.setNome("José");
+
         try {
             ClienteDados dados = new ClienteDados();
-            dados.cadastrar(c);
 
-            JOptionPane.showMessageDialog(null, "Inserido com sucesso.");
+            //dados.cadastrar(c);
+            //JOptionPane.showMessageDialog(null, "Inserido com sucesso.");
+
+            //dados.atualizar(c);
+            //JOptionPane.showMessageDialog(null, "Atualizado com sucesso.");
+
+            dados.remover(c);
+            JOptionPane.showMessageDialog(null, "Removido com sucesso.");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Erro: " + ex.getMessage());
         }
