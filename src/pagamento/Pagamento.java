@@ -1,7 +1,6 @@
 package pagamento;
 
 import bandeira.Bandeira;
-import java.sql.Date;
 import java.sql.Time;
 import nota.Nota;
 
@@ -10,12 +9,12 @@ public class Pagamento {
     private int codigo;
     private Nota nota;
     private Bandeira bandeira;
-    private Date data;
+    private String data;
     private Time horario;
     private double valor;
     private int numero;
     private String titular;
-    private Date validade;
+    private String validade;
     private int cvv;
 
     public int getCodigo() {
@@ -42,11 +41,11 @@ public class Pagamento {
         this.bandeira = bandeira;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
@@ -82,11 +81,11 @@ public class Pagamento {
         this.titular = titular;
     }
 
-    public Date getValidade() {
+    public String getValidade() {
         return validade;
     }
 
-    public void setValidade(Date validade) {
+    public void setValidade(String validade) {
         this.validade = validade;
     }
 
@@ -98,5 +97,5 @@ public class Pagamento {
         this.cvv = cvv;
     }
 
-    
+
 }

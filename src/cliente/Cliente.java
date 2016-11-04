@@ -1,14 +1,13 @@
 package cliente;
 
 import pessoa.Pessoa;
-import java.sql.Date;
 
 public class Cliente extends Pessoa {
 
     private String cpf;
     private String nome;
     private char sexo;
-    private Date dataNascimento;
+    private String dataNascimento;
 
 
     //Getters and setters
@@ -36,11 +35,11 @@ public class Cliente extends Pessoa {
         this.sexo = sexo;
     }
 
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 

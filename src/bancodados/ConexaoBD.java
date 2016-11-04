@@ -11,7 +11,7 @@ public class ConexaoBD {
 
     public Statement conectar() throws ClassNotFoundException, SQLException {
         String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-        String url = "jdbc:sqlserver://DESKTOP-BJGK76C\\SQLEXPRESS:1433;DatabaseName=mercado";
+        String url = "jdbc:sqlserver://localhost\\SQLEXPRESS:1433;DatabaseName=Locadora";
         String usuario = "sa";
         String senha = "123";
         Class.forName(driver);

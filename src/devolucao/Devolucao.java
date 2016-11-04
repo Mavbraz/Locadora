@@ -1,13 +1,12 @@
 package devolucao;
 
-import java.sql.Date;
 import java.sql.Time;
 import nota.Nota;
 
 public class Devolucao {
     private int codigo;
     private Nota nota;
-    private Date data;
+    private String data;
     private Time horario;
     private double valor;
 
@@ -20,11 +19,11 @@ public class Devolucao {
         this.codigo = codigo;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
