@@ -4,7 +4,7 @@ import bancodados.ConexaoBD;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-//Herda ConexãoBD e implementa InterfaceCliente (contrato)
+//Herda ConexãoBD e implementa ClienteInterface (contrato)
 /*
 * Todos tem que ter:
 conectar();
@@ -17,7 +17,7 @@ PreparedStatement cmd = conn.prepareStatement(sql); //Colocar o sql
 }
 desconectar();
 */
-public class ClienteDados extends ConexaoBD implements InterfaceCliente {
+public class ClienteDados extends ConexaoBD implements ClienteInterface {
 
     @Override
     public void cadastrar(Cliente c) throws Exception {

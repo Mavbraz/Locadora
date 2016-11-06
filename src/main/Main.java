@@ -1,7 +1,7 @@
 package main;
 
 import cliente.Cliente;
-import cliente.ClienteDados;
+import cliente.ClienteNegocio;
 import javax.swing.JOptionPane;
 
 //Classe teste para ver se cadastra, atualiza e remove corretamente.
@@ -15,7 +15,7 @@ public class Main {
         c.setSexo('M');
         c.setDataNascimento("01/01/2017");
         c.setTelefone("(81)99807-3310");
-        c.setCep("12345-678");
+        c.setCep("12.345-678");
         c.setLogradouro("Rua ABC");
         c.setNumero(120);
         c.setBairro("Boa Viagem");
@@ -27,16 +27,16 @@ public class Main {
         //Tentativa, se der erro mostra a mensagem
         try {
             //Cria uma instância de dados para ser utilizada
-            ClienteDados dados = new ClienteDados();
+            ClienteNegocio negocio = new ClienteNegocio();
 
-            //dados.cadastrar(c);
-            //JOptionPane.showMessageDialog(null, "Inserido com sucesso.");
+            negocio.cadastrar(c);
+            JOptionPane.showMessageDialog(null, "Inserido com sucesso.");
 
-            //dados.atualizar(c);
+            //negocio.atualizar(c);
             //JOptionPane.showMessageDialog(null, "Atualizado com sucesso.");
 
-            dados.remover(c);
-            JOptionPane.showMessageDialog(null, "Removido com sucesso.");
+            //negocio.remover(c);
+            //JOptionPane.showMessageDialog(null, "Removido com sucesso.");
         } catch (Exception ex) {
             //Exibição do erro
             JOptionPane.showMessageDialog(null, "Erro: " + ex.getMessage());
