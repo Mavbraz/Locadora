@@ -1,7 +1,6 @@
 package pagamento;
 
 import bandeira.Bandeira;
-import java.sql.Time;
 import nota.Nota;
 
 public class Pagamento {
@@ -10,7 +9,7 @@ public class Pagamento {
     private Nota nota;
     private Bandeira bandeira;
     private String data;
-    private Time horario;
+    private String horario;
     private double valor;
     private int numero;
     private String titular;
@@ -49,11 +48,11 @@ public class Pagamento {
         this.data = data;
     }
 
-    public Time getHorario() {
+    public String getHorario() {
         return horario;
     }
 
-    public void setHorario(Time horario) {
+    public void setHorario(String horario) {
         this.horario = horario;
     }
 

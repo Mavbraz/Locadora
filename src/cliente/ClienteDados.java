@@ -2,6 +2,7 @@ package cliente;
 
 import bancodados.ConexaoBD;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 //Herda ConexãoBD e implementa ClienteInterface (contrato)
@@ -16,11 +17,11 @@ PreparedStatement cmd = conn.prepareStatement(sql); //Colocar o sql
     //Tratamento do erro com throw new Excetion(messagem);
 }
 desconectar();
-*/
+ */
 public class ClienteDados extends ConexaoBD implements ClienteInterface {
 
     @Override
-    public void cadastrar(Cliente c) throws Exception {
+    public void inserir(Cliente c) throws Exception {
         conectar();
         String sql = "INSERT INTO Cliente (CPF, Nome, Sexo, Dt_Nascimento, Telefone, CEP, Logradouro, Numero, Complemento, Bairro, Cidade, UF)";
         sql += "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
@@ -33,7 +34,7 @@ public class ClienteDados extends ConexaoBD implements ClienteInterface {
             cmd.setString(5, c.getTelefone());
             cmd.setString(6, c.getCep());
             cmd.setString(7, c.getLogradouro());
-            cmd.setInt   (8, c.getNumero());
+            cmd.setInt(8, c.getNumero());
             cmd.setString(9, c.getComplemento());
             cmd.setString(10, c.getBairro());
             cmd.setString(11, c.getCidade());
@@ -56,7 +57,7 @@ public class ClienteDados extends ConexaoBD implements ClienteInterface {
             cmd.setString(2, c.getTelefone());
             cmd.setString(3, c.getCep());
             cmd.setString(4, c.getLogradouro());
-            cmd.setInt   (5, c.getNumero());
+            cmd.setInt(5, c.getNumero());
             cmd.setString(6, c.getComplemento());
             cmd.setString(7, c.getBairro());
             cmd.setString(8, c.getCidade());
@@ -81,5 +82,24 @@ public class ClienteDados extends ConexaoBD implements ClienteInterface {
             throw new Exception("Erro ao remover. " + e.getMessage());
         }
         desconectar();
+    }
+
+    @Override
+    public boolean verificarCliente(Cliente c) throws Exception {
+        boolean existencia = false;
+        conectar();
+        String sql = "SELECT Nome FROM Cliente WHERE CPF = ?;";
+        try {
+            PreparedStatement cmd = conn.prepareStatement(sql);
+            cmd.setString(1, c.getCpf());
+            ResultSet leitor = cmd.executeQuery();
+            if (leitor.next()) {
+                existencia = true;
+            }
+        } catch (SQLException e) {
+            throw new Exception("Erro ao verificar. " + e.getMessage());
+        }
+        desconectar();
+        return existencia;
     }
 }

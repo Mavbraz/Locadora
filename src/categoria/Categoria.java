@@ -1,6 +1,7 @@
 package categoria;
 
 public class Categoria {
+
     private int codigo;
     private String descricao;
 
@@ -20,5 +21,4 @@ public class Categoria {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-
 }

@@ -3,7 +3,7 @@ package cliente;
 public class ClienteNegocio implements ClienteInterface {
 
     @Override
-    public void cadastrar(Cliente c) throws Exception {
+    public void inserir(Cliente c) throws Exception {
         //Validações cadastrar
         //Não utilizei .trim() porque queria remover todos os espaços e não apenas o do início e fim
         if (c.getCpf().replaceAll(" ", "").length() < 14) {
@@ -39,11 +39,11 @@ public class ClienteNegocio implements ClienteInterface {
         }
 
         if (c.getCidade().equals("")) {
-            throw new Exception("Cidade inválido.");
+            throw new Exception("Cidade inválida.");
         }
 
         ClienteDados dados = new ClienteDados();
-        dados.cadastrar(c);
+        dados.inserir(c);
     }
 
     @Override
@@ -77,7 +77,7 @@ public class ClienteNegocio implements ClienteInterface {
         }
 
         if (c.getCidade().equals("")) {
-            throw new Exception("Cidade inválido.");
+            throw new Exception("Cidade inválida.");
         }
 
         ClienteDados dados = new ClienteDados();
@@ -92,6 +92,16 @@ public class ClienteNegocio implements ClienteInterface {
 
         ClienteDados dados = new ClienteDados();
         dados.remover(c);
+    }
+
+    @Override
+    public boolean verificarCliente(Cliente c) throws Exception {
+        if (c.getCpf().replaceAll(" ", "").length() < 14) {
+            throw new Exception("CPF inválido.");
+        }
+
+        ClienteDados dados = new ClienteDados();
+        return dados.verificarCliente(c);
     }
 
 }

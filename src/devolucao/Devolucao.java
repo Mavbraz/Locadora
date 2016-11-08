@@ -1,13 +1,12 @@
 package devolucao;
 
-import java.sql.Time;
 import nota.Nota;
 
 public class Devolucao {
     private int codigo;
     private Nota nota;
     private String data;
-    private Time horario;
+    private String horario;
     private double valor;
 
     //Getters and setters
@@ -27,11 +26,11 @@ public class Devolucao {
         this.data = data;
     }
 
-    public Time getHorario() {
+    public String getHorario() {
         return horario;
     }
 
-    public void setHorario(Time horario) {
+    public void setHorario(String horario) {
         this.horario = horario;
     }
 
@@ -42,8 +41,4 @@ public class Devolucao {
     public void setValor(double valor) {
         this.valor = valor;
     }
-
-
-
-
 }

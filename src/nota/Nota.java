@@ -3,15 +3,14 @@ package nota;
 /* Anotações, criar a classe Cliente cliente.
  */
 import cliente.Cliente;
-import java.sql.Time;
 
 public class Nota {
 
     private int codigo;
     private Cliente cliente;
     private String data;
-    private Time horario;
-    private char situacao;
+    private String horario;
+    private String situacao;
 
     public int getCodigo() {
         return codigo;
@@ -29,19 +28,19 @@ public class Nota {
         this.data = data;
     }
 
-    public Time getHorario() {
+    public String getHorario() {
         return horario;
     }
 
-    public void setHorario(Time horario) {
+    public void setHorario(String horario) {
         this.horario = horario;
     }
 
-    public char getSituacao() {
+    public String getSituacao() {
         return situacao;
     }
 
-    public void setSituacao(char situacao) {
+    public void setSituacao(String situacao) {
         this.situacao = situacao;
     }
 

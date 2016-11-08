@@ -9,7 +9,6 @@ public class Cliente extends Pessoa {
     private char sexo;
     private String dataNascimento;
 
-
     //Getters and setters
     public String getCpf() {
         return cpf;
@@ -42,5 +41,4 @@ public class Cliente extends Pessoa {
     public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
-
 }
