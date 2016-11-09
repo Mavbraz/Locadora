@@ -3,17 +3,16 @@ package fabricante;
 import pessoa.Pessoa;
 
 public class Fabricante extends Pessoa {
-    private int cnpj;
+    private String cnpj;
     private String nomeFantasia;
     private String razaoSocial;
 
-
     //Getters and setters
-    public int getCnpj() {
+    public String getCnpj() {
         return cnpj;
     }
 
-    public void setCnpj(int cnpj) {
+    public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
 

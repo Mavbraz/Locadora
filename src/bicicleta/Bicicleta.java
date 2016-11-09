@@ -13,6 +13,11 @@ public class Bicicleta {
     private String cor;
     private String pneu;
 
+    public Bicicleta() {
+        this.fabricante = new Fabricante();
+        this.categoria = new Categoria();
+    }
+
     //Getters and setters
     public int getCodigo() {
         return codigo;
@@ -60,5 +65,13 @@ public class Bicicleta {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public Fabricante getFabricante() {
+        return fabricante;
+    }
+
+    public void setFabricante(Fabricante fabricante) {
+        this.fabricante = fabricante;
     }
 }
