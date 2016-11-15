@@ -1,59 +1,49 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package fachada;
 
-import cliente.Cliente;
-import cliente.ClienteInterface;
-import cliente.ClienteNegocio;
-import nota.Nota;
-import nota.NotaInterface;
-import nota.NotaNegocio;
+import bicicleta.Bicicleta;
+import bicicleta.BicicletaInterface;
+import bicicleta.BicicletaNegocio;
+import java.util.ArrayList;
 
-public class Fachada implements ClienteInterface, NotaInterface {
+/**
+ *
+ * @author Admin
+ */
+public class Fachada implements BicicletaInterface {
 
     @Override
-    public void inserir(Cliente c) throws Exception {
-        ClienteNegocio negocioC = new ClienteNegocio();
-        negocioC.inserir(c);
+    public void inserir(Bicicleta b) throws Exception {
+        BicicletaNegocio negocio = new BicicletaNegocio();
+        negocio.inserir(b);
     }
 
     @Override
-    public void atualizar(Cliente c) throws Exception {
-        ClienteNegocio negocioC = new ClienteNegocio();
-        negocioC.atualizar(c);
+    public void atualizar(Bicicleta b) throws Exception {
+        BicicletaNegocio negocio = new BicicletaNegocio();
+        negocio.atualizar(b);
     }
 
     @Override
-    public void remover(Cliente c) throws Exception {
-        ClienteNegocio negocioC = new ClienteNegocio();
-        negocioC.remover(c);
+    public void remover(Bicicleta b) throws Exception {
+        BicicletaNegocio negocio = new BicicletaNegocio();
+        negocio.remover(b);
     }
 
     @Override
-    public boolean verificarCliente(Cliente c) throws Exception {
-        ClienteNegocio negocioC = new ClienteNegocio();
-        return negocioC.verificarCliente(c);
+    public ArrayList<Bicicleta> listar(Bicicleta filtro) throws Exception {
+        BicicletaNegocio negocio = new BicicletaNegocio();
+        return negocio.listar(filtro);
     }
 
     @Override
-    public void inserir(Nota n) throws Exception {
-        NotaNegocio negocioN = new NotaNegocio();
-        negocioN.inserir(n);
+    public boolean verificarBicicleta(Bicicleta b) throws Exception {
+        BicicletaNegocio negocio = new BicicletaNegocio();
+        return negocio.verificarBicicleta(b);
     }
 
-    @Override
-    public void atualizar(Nota n) throws Exception {
-        NotaNegocio negocioN = new NotaNegocio();
-        negocioN.atualizar(n);
-    }
-
-    @Override
-    public void remover(Nota n) throws Exception {
-        NotaNegocio negocioN = new NotaNegocio();
-        negocioN.remover(n);
-    }
-
-    @Override
-    public boolean verificarNota(Nota n) throws Exception {
-        NotaNegocio negocioN = new NotaNegocio();
-        return negocioN.verificarNota(n);
-    }
 }

@@ -1,5 +1,7 @@
 package bicicleta;
 
+import java.util.ArrayList;
+
 public interface BicicletaInterface {
 
     //inserir bicicleta no banco de dados
@@ -12,7 +14,7 @@ public interface BicicletaInterface {
     void remover(Bicicleta b) throws Exception;
 
     // listar bicicleta no banco de dadoss
-    void listar() throws Exception;
+    ArrayList<Bicicleta> listar(Bicicleta filtro) throws Exception;
 
     // verificar bicicleta no banco de dados
     boolean verificarBicicleta(Bicicleta b) throws Exception;
