@@ -1,29 +1,17 @@
 package bicicleta;
 
+import fachada.Fachada;
 import java.util.ArrayList;
 
 public class BicicletaNegocio implements BicicletaInterface {
-
-    @Override
-    public void inserir(Bicicleta b) throws Exception {
-        if (b.getCodigo() < 1) {
-            throw new Exception("Codigo inválido.");
-        }
-
-        if (b.getFabricante().getCnpj().length() < 18) {
-            throw new Exception("Fabricante inválido.");
-        }
-
-        if (b.getCategoria().getCodigo() < 1) {
-            throw new Exception("Categoria inválida.");
-        }
-
+    
+    private void validarCampos(Bicicleta b) throws Exception {
         if (b.getDescricao().equals("")) {
-            throw new Exception("Descrição inválida.");
+            throw new Exception("Nome inválido.");
         }
 
-        if (b.getAno().length() < 4) {
-            throw new Exception("Ano ivánlido ");
+        if (b.getAno().replace(" ", "").length() < 4) {
+            throw new Exception("Ano inválido.");
         }
 
         if (b.getCor().equals("")) {
@@ -32,6 +20,21 @@ public class BicicletaNegocio implements BicicletaInterface {
 
         if (b.getPneu().equals("")) {
             throw new Exception("Pneu inválido.");
+        }
+    }
+
+    @Override
+    public void inserir(Bicicleta b) throws Exception {
+        Fachada fachada = new Fachada();
+        if (b.getCodigo() < 1) {
+            throw new Exception("Codigo inválido.");
+        }
+
+        validarCampos(b);
+        
+        ArrayList<Bicicleta> existencia = fachada.listar(b);
+        if (!existencia.isEmpty()) {
+            throw new Exception("Bicicleta existente.");
         }
 
         BicicletaDados dados = new BicicletaDados();
@@ -40,21 +43,7 @@ public class BicicletaNegocio implements BicicletaInterface {
 
     @Override
     public void atualizar(Bicicleta b) throws Exception {
-        if (b.getDescricao().equals("")) {
-            throw new Exception("Descrição inválida.");
-        }
-
-        if (b.getAno().length() < 4) {
-            throw new Exception("Ano ivánlido ");
-        }
-
-        if (b.getCor().equals("")) {
-            throw new Exception("Cor inválida.");
-        }
-
-        if (b.getPneu().equals("")) {
-            throw new Exception("Pneu inválido.");
-        }
+        validarCampos(b);
 
         BicicletaDados dados = new BicicletaDados();
         dados.atualizar(b);
@@ -62,10 +51,6 @@ public class BicicletaNegocio implements BicicletaInterface {
 
     @Override
     public void remover(Bicicleta b) throws Exception {
-        if (b.getCodigo() < 1) {
-            throw new Exception("Codigo inválido.");
-        }
-
         BicicletaDados dados = new BicicletaDados();
         dados.remover(b);
     }
@@ -74,16 +59,6 @@ public class BicicletaNegocio implements BicicletaInterface {
     public ArrayList<Bicicleta> listar(Bicicleta filtro) throws Exception {
         BicicletaDados dados = new BicicletaDados();
         return dados.listar(filtro);
-    }
-
-    @Override
-    public boolean verificarBicicleta(Bicicleta b) throws Exception {
-        if (b.getCodigo() < 1) {
-            throw new Exception("Codigo inválido.");
-        }
-
-        BicicletaDados dados = new BicicletaDados();
-        return dados.verificarBicicleta(b);
     }
 
 }

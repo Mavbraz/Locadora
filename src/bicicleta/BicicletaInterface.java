@@ -16,7 +16,4 @@ public interface BicicletaInterface {
     // listar bicicleta no banco de dadoss
     ArrayList<Bicicleta> listar(Bicicleta filtro) throws Exception;
 
-    // verificar bicicleta no banco de dados
-    boolean verificarBicicleta(Bicicleta b) throws Exception;
-
 }

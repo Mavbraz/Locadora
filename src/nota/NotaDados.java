@@ -1,6 +1,6 @@
 package nota;
 
-import bancodados.ConexaoBD;
+import outros.ConexaoBD;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

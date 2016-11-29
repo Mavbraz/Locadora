@@ -1,6 +1,6 @@
 package bicicleta;
 
-import bancodados.ConexaoBD;
+import outros.ConexaoBD;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,14 +33,16 @@ public class BicicletaDados extends ConexaoBD implements BicicletaInterface {
     @Override
     public void atualizar(Bicicleta b) throws Exception {
         conectar();
-        String sql = "UPDATE Bicicleta SET Ds_Bicicleta = ?, Ano = ?, Cor = ?, Pneu = ? WHERE Cd_Bicicleta = ?;";
+        String sql = "UPDATE Bicicleta SET Ds_Bicicleta = ?, Ano = ?, Cor = ?, Pneu = ?, CNPJ = ?, Cd_Categoria = ? WHERE Cd_Bicicleta = ?;";
         try {
             PreparedStatement cmd = conn.prepareStatement(sql);
             cmd.setString(1, b.getDescricao());
             cmd.setString(2, b.getAno());
             cmd.setString(3, b.getCor());
             cmd.setString(4, b.getPneu());
-            cmd.setInt(5, b.getCodigo());
+            cmd.setString(5, b.getFabricante().getCnpj());
+            cmd.setInt   (6, b.getCategoria().getCodigo());
+            cmd.setInt   (7, b.getCodigo());
             cmd.execute();
         } catch (SQLException e) {
             throw new Exception("Erro ao atualizar. " + e.getMessage());
@@ -75,7 +77,8 @@ public class BicicletaDados extends ConexaoBD implements BicicletaInterface {
         try {
             PreparedStatement cmd = conn.prepareStatement(sql);
             if (filtro.getCodigo() > 0) {
-                cmd.setInt(position++, filtro.getCodigo());
+                cmd.setInt(position, filtro.getCodigo());
+                position += 1;
             }
             ResultSet leitor = cmd.executeQuery();
             while (leitor.next()) {
@@ -90,28 +93,9 @@ public class BicicletaDados extends ConexaoBD implements BicicletaInterface {
                 bicicletas.add(b);
             }
         } catch (SQLException e) {
-            throw new Exception("Erro ao verificar. " + e.getMessage());
+            throw new Exception("Erro ao listar. " + e.getMessage());
         }
         desconectar();
         return bicicletas;
-    }
-
-    @Override
-    public boolean verificarBicicleta(Bicicleta b) throws Exception {
-        boolean existencia = false;
-        conectar();
-        String sql = "SELECT NULL FROM Bicicleta WHERE Cd_Bicicleta = ?;";
-        try {
-            PreparedStatement cmd = conn.prepareStatement(sql);
-            cmd.setInt(1, b.getCodigo());
-            ResultSet leitor = cmd.executeQuery();
-            if (leitor.next()) {
-                existencia = true;
-            }
-        } catch (SQLException e) {
-            throw new Exception("Erro ao verificar. " + e.getMessage());
-        }
-        desconectar();
-        return existencia;
     }
 }
