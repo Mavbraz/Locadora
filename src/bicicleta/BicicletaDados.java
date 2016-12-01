@@ -10,6 +10,8 @@ public class BicicletaDados extends ConexaoBD implements BicicletaInterface {
 
     @Override
     public void inserir(Bicicleta b) throws Exception {
+        b = putNull(b);
+        
         conectar();
         String sql = "INSERT INTO Bicicleta (Cd_Bicicleta, CNPJ, Cd_Categoria, Ds_Bicicleta, Ano, Cor, Pneu)";
         sql += "VALUES (?, ?, ?, ?, ?, ?, ?);";
@@ -32,6 +34,8 @@ public class BicicletaDados extends ConexaoBD implements BicicletaInterface {
 
     @Override
     public void atualizar(Bicicleta b) throws Exception {
+        b = putNull(b);
+        
         conectar();
         String sql = "UPDATE Bicicleta SET Ds_Bicicleta = ?, Ano = ?, Cor = ?, Pneu = ?, CNPJ = ?, Cd_Categoria = ? WHERE Cd_Bicicleta = ?;";
         try {
@@ -70,9 +74,13 @@ public class BicicletaDados extends ConexaoBD implements BicicletaInterface {
         int position = 1;
         ArrayList<Bicicleta> bicicletas = new ArrayList<>();
         conectar();
-        String sql = "SELECT Cd_Bicicleta, CNPJ, Cd_Categoria, Ds_Bicicleta, Ano, Cor, Pneu FROM Bicicleta WHERE Cd_Bicicleta > 0";
+        String sql = "SELECT B.Cd_Bicicleta, F.CNPJ, F.Nome_Fantasia, F.Razao_Social, C.Cd_Categoria, C.Ds_Categoria, B.Ds_Bicicleta, B.Ano, B.Cor, B.Pneu ";
+        sql += "FROM Bicicleta AS B ";
+        sql += "INNER JOIN Fabricante AS F ON F.CNPJ = B.CNPJ ";
+        sql += "INNER JOIN Categoria AS C ON C.Cd_Categoria = B.Cd_Categoria ";
+        sql += "WHERE B.Cd_Bicicleta > 0 ";
         if (filtro.getCodigo() > 0) {
-            sql += " AND Cd_Bicicleta = ?";
+            sql += " AND B.Cd_Bicicleta = ?";
         }
         try {
             PreparedStatement cmd = conn.prepareStatement(sql);
@@ -85,11 +93,16 @@ public class BicicletaDados extends ConexaoBD implements BicicletaInterface {
                 Bicicleta b = new Bicicleta();
                 b.setCodigo(leitor.getInt("Cd_Bicicleta"));
                 b.getFabricante().setCnpj(leitor.getString("CNPJ"));
+                b.getFabricante().setNomeFantasia(leitor.getString("Nome_Fantasia"));
+                b.getFabricante().setRazaoSocial(leitor.getString("Razao_Social"));
                 b.getCategoria().setCodigo(leitor.getInt("Cd_Categoria"));
+                b.getCategoria().setDescricao(leitor.getString("Ds_Categoria"));
                 b.setDescricao(leitor.getString("Ds_Bicicleta"));
                 b.setAno(leitor.getString("Ano"));
                 b.setCor(leitor.getString("Cor"));
                 b.setPneu(leitor.getString("Pneu"));
+                
+                b = removeNull(b);
                 bicicletas.add(b);
             }
         } catch (SQLException e) {
@@ -97,5 +110,19 @@ public class BicicletaDados extends ConexaoBD implements BicicletaInterface {
         }
         desconectar();
         return bicicletas;
+    }
+    
+    private Bicicleta putNull(Bicicleta b) {
+        if (b.getFabricante().getNomeFantasia().equals("")) {
+            b.getFabricante().setNomeFantasia(null);
+        }
+        return b;
+    }
+    
+    private Bicicleta removeNull(Bicicleta b) {
+        if (b.getFabricante().getNomeFantasia().equals("")) {
+            b.getFabricante().setNomeFantasia(null);
+        }
+        return b;
     }
 }

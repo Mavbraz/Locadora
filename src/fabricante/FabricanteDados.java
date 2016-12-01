@@ -108,7 +108,7 @@ public class FabricanteDados extends ConexaoBD implements FabricanteInterface {
                 f.setCidade(leitor.getString("Cidade"));
                 f.setUf(leitor.getString("UF"));
 
-                f = clearNull(f);
+                f = removeNull(f);
                 fabricantes.add(f);
             }
         } catch (SQLException e) {
@@ -129,7 +129,7 @@ public class FabricanteDados extends ConexaoBD implements FabricanteInterface {
         return f;
     }
     
-    private Fabricante clearNull(Fabricante f) {
+    private Fabricante removeNull(Fabricante f) {
         if (f.getNomeFantasia() == null) {
             f.setNomeFantasia("");
         }

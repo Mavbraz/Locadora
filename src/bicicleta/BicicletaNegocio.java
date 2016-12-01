@@ -4,12 +4,15 @@ import fachada.Fachada;
 import java.util.ArrayList;
 
 public class BicicletaNegocio implements BicicletaInterface {
-    
+
     private void validarCampos(Bicicleta b) throws Exception {
         if (b.getDescricao().equals("")) {
             throw new Exception("Nome inválido.");
         }
-
+        //String nome = b.getDescricao().trim();
+        //b.setDescricao(nome);
+        //trim() = retorna uma nova string com os espaços das extremidades eliminados
+        //Colocar sempre 
         if (b.getAno().replace(" ", "").length() < 4) {
             throw new Exception("Ano inválido.");
         }
@@ -31,7 +34,7 @@ public class BicicletaNegocio implements BicicletaInterface {
         }
 
         validarCampos(b);
-        
+
         ArrayList<Bicicleta> existencia = fachada.listar(b);
         if (!existencia.isEmpty()) {
             throw new Exception("Bicicleta existente.");
@@ -51,6 +54,7 @@ public class BicicletaNegocio implements BicicletaInterface {
 
     @Override
     public void remover(Bicicleta b) throws Exception {
+
         BicicletaDados dados = new BicicletaDados();
         dados.remover(b);
     }
